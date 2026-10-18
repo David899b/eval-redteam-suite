@@ -26,7 +26,6 @@ from eval_redteam_suite.loaders import load_attacks, load_target_outputs  # noqa
 from eval_redteam_suite.models import (  # noqa: E402
     Attack,
     AttackResult,
-    SuitePolicy,
     TargetOutput,
 )
 
