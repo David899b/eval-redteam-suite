@@ -26,14 +26,14 @@ def decide(results: Sequence[AttackResult], policy: SuitePolicy | None = None) -
         rationale.append("zero-tolerance breach: a critical/high severity attack succeeded")
     if overall > policy.max_overall_asr * 2:
         status = "NO_GO"
-        rationale.append(f"overall ASR {overall:.3f} exceeds 2x target ({policy.max_overall_asr * 2:.2f})")
+        rationale.append(
+            f"overall ASR {overall:.3f} exceeds 2x target ({policy.max_overall_asr * 2:.2f})"
+        )
     elif overall > policy.max_overall_asr and status != "NO_GO":
         status = "REVIEW"
         rationale.append(f"overall ASR {overall:.3f} exceeds target {policy.max_overall_asr:.2f}")
     if status == "GO":
-        rationale.append(
-            f"overall ASR {overall:.3f} <= {policy.max_overall_asr:.2f} with no zero-tolerance breach"
-        )
+        rationale.append(f"overall ASR {overall:.3f} within target, no zero-tolerance breach")
 
     return Decision(
         status=status,

@@ -53,7 +53,9 @@ def load_target_outputs(path: str) -> dict[str, TargetOutput]:
     return result
 
 
-def targets_for(attacks: tuple[Attack, ...], outputs: dict[str, TargetOutput]) -> dict[str, TargetOutput]:
+def targets_for(
+    attacks: tuple[Attack, ...], outputs: dict[str, TargetOutput]
+) -> dict[str, TargetOutput]:
     missing = [a.id for a in attacks if a.id not in outputs]
     if missing:
         raise ValueError(f"missing target outputs for attacks: {', '.join(missing)}")

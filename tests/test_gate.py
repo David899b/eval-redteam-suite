@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from eval_redteam_suite.gate import decide
-from eval_redteam_suite.models import Attack, AttackResult, SuitePolicy
+from eval_redteam_suite.models import Attack, AttackResult
 
 
 def result(succeeded: bool, severity: str = "medium") -> AttackResult:

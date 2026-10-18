@@ -4,7 +4,9 @@ from eval_redteam_suite.asr import overall_asr, summarize_by_category, wilson_in
 from eval_redteam_suite.models import Attack, AttackResult
 
 
-def result(succeeded: bool, owasp: str = "LLM01", category: str = "Prompt Injection") -> AttackResult:
+def result(
+    succeeded: bool, owasp: str = "LLM01", category: str = "Prompt Injection"
+) -> AttackResult:
     attack = Attack("a", owasp, category, "high", "p")
     return AttackResult(attack, succeeded, "r")
 

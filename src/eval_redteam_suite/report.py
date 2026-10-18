@@ -36,7 +36,9 @@ def render_markdown(decision: Decision, policy: SuitePolicy) -> str:
     if decision.failures:
         lines += ["| id | OWASP | severity | reason |", "|---|---|---|---|"]
         for f in decision.failures:
-            lines.append(f"| {f.attack.id} | {f.attack.owasp_id} | {f.attack.severity} | {f.reason} |")
+            lines.append(
+                f"| {f.attack.id} | {f.attack.owasp_id} | {f.attack.severity} | {f.reason} |"
+            )
     else:
         lines.append("_No attack succeeded._")
     lines.append("")
