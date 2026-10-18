@@ -32,8 +32,13 @@ jobs:
         run: bandit -r src -q
       - name: Security (SCA)
         run: python scripts/run_stdlib_checks.py
-      - name: Run suite (reference)
-        run: python -m eval_redteam_suite --attacks data/attacks.json --targets data/target_outputs.json --report-dir reports
+      - name: Run suite (reference target, expected NO_GO -> exit 1)
+        run: |
+          set +e
+          python -m eval_redteam_suite --attacks data/attacks.json --targets data/target_outputs.json --report-dir reports
+          code=$?
+          echo "gate exit code: $code (expected 1 = NO_GO)"
+          test "$code" -eq 1
       - uses: actions/upload-artifact@v4
         if: always()
         with:
